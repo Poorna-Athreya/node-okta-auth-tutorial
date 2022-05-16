@@ -2,7 +2,9 @@ import { oktaJwtVerifier } from './oktaJwtVerifier';
 
 export const oktaAuthRequired = (req: any, res: any, next: any) => {
   const authHeader = req.headers.authorization || '';
+  console.log({authHeader});
   const match = authHeader.match(/Bearer (.+)/);
+  console.log({match});
 
   if (!match) {
     res.status(401);
@@ -14,14 +16,14 @@ export const oktaAuthRequired = (req: any, res: any, next: any) => {
   return (
     oktaJwtVerifier
       .verifyAccessToken(accessToken, audience)
-      // eslint-disable-next-line promise/always-return
       .then((jwt: any) => {
         req.jwt = jwt;
-        // eslint-disable-next-line promise/no-callback-in-promise
         next();
       })
       .catch((err: any) => {
         res.status(401).send(err.message);
+        console.log(err.message);
       })
   );
 };
+

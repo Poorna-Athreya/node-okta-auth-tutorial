@@ -1,7 +1,3 @@
-/* eslint-disable eslint-comments/disable-enable-pair */
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
 import dotenv from 'dotenv';
 import express, { Express, Request, Response } from 'express';
 import cors from 'cors';
@@ -12,7 +8,7 @@ dotenv.config({
 });
 
 const app: Express = express();
-const PORT = process.env.APP_PORT as string;
+const PORT = process.env.APP_PORT as string || "8000";
 
 app.use(cors());
 

@@ -18,7 +18,7 @@ const Profile = () => {
   }, [authState, oktaAuth]); // Update if authState changes
 
   const callBackend = async () => {
-    const response = await fetch("http://localhost:8080/api/locked", {
+    const response = await fetch("http://localhost:8000/api/locked", {
       headers: {
         Authorization: `Bearer ${authState.accessToken.accessToken}`,
       },
@@ -76,7 +76,7 @@ const Profile = () => {
             })}
           </tbody>
         </table>
-        {/* <button onClick={callBackend}>Call api</button>
+        <button onClick={callBackend}>Call api</button>
         <table>
           <thead>
             <tr>
@@ -92,7 +92,7 @@ const Profile = () => {
               </tr>
             ))}
           </tbody>
-        </table> */}
+        </table>
       </div>
     </div>
   );
