@@ -18,6 +18,7 @@ export const oktaAuthRequired = (req: any, res: any, next: any) => {
       .verifyAccessToken(accessToken, audience)
       .then((jwt: any) => {
         req.jwt = jwt;
+        console.log(jwt);
         next();
       })
       .catch((err: any) => {
